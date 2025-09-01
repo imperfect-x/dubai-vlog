@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Machaa! 🎉</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Fredoka+One:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Fredoka+One&family=Lobster&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -405,21 +405,30 @@
 
         /* SUBTITLE FOR DESKTOP */
         .birthday-subtitle {
-            font-family: 'Quicksand', sans-serif;
-            font-size: clamp(16px, 3vw, 24px);
-            font-weight: 500;
-            text-align: center;
-            opacity: 0;
-            position: fixed;
-            top: 22%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 59;
-            color: #fff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-            letter-spacing: 1px;
-            transition: all 2s ease;
-        }
+    font-family: 'Quicksand', sans-serif;
+        font-family: 'Dancing Script';
+    font-size: clamp(16px, 3vw, 24px);
+    font-weight: 600;
+    text-align: center;
+    opacity: 0;
+    position: fixed;
+    top: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 59;
+    color: #fff; /* Keep main text white */
+    letter-spacing: 1px;
+    transition: all 2s ease;
+    
+    /* Cracker-like glowing border effect */
+    text-shadow: 
+        0 0 5px #ff0,   /* yellow */
+        0 0 10px #f0f,  /* pink/purple */
+        0 0 15px #0ff,  /* cyan */
+        0 0 20px #ff4500, /* orange-red */
+        0 0 25px #00ff00, /* green */
+        0 0 30px #1e90ff; /* blue */
+}
 
         .birthday-subtitle.show {
             opacity: 1;
@@ -1439,14 +1448,15 @@
         <h1 class="birthday-title" id="birthdayTitle">Happy Birthday Machaa!</h1>
 
         <!-- Birthday subtitle -->
-        <p class="birthday-subtitle" id="birthdaySubtitle">May your day be filled with love, laughter, and unforgettable memories.</p>
-
+        <p class="birthday-subtitle" id="birthdaySubtitle">
+        🎂🎈 May your day be filled with love ❤️, laughter 😂, and unforgettable memories 🌟🎉
+        </p>
         <!-- Photo container with enhanced animation -->
         <div class="photo-container" id="photoContainer">
             <img src="dubai.jpg" alt="Birthday Photo of Machaa" class="birthday-photo" id="birthdayPhoto">
             <div class="photo-caption" id="photoCaption">
                 <span class="caption-heart">💖</span>
-                Dubai Vlog
+                ĐɄ฿₳ł VⱠØ₲
                 <span class="caption-heart">💖</span>
             </div>
         </div>
