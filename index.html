@@ -832,7 +832,7 @@
 
         .gallery-nav {
             position: absolute;
-            top: 50%;
+            top: 70%;
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.2);
             border: none;
@@ -1131,6 +1131,54 @@
         .audio-control:active {
             background: rgba(255, 255, 255, 0.4);
             transform: scale(1.1);
+        }
+
+        /* Footer Design */
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 5;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .footer:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-heart {
+            color: #ff69b4;
+            margin: 0 3px;
+            animation: heart-pulse 2s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                bottom: 8px;
+                right: 15px;
+                font-size: 11px;
+                padding: 6px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer {
+                bottom: 5px;
+                right: 10px;
+                font-size: 10px;
+                padding: 5px 10px;
+            }
         }
 
         /* DESKTOP OPTIMIZATIONS */
@@ -1594,6 +1642,23 @@
         .hidden {
             display: none !important;
         }
+        .card-back p {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+            margin: 12px 0;
+        }
+
+        .card-back p.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card-back p:first-child strong {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(20px, 5vw, 32px);
+            font-weight: 700;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -1629,7 +1694,8 @@
     </audio>
 
     <!-- Audio control -->
-    <button class="audio-control" id="muteBtn" title="Toggle Audio">🔊</button>
+    <!-- <button class="audio-control" id="muteBtn" title="Toggle Audio">🔊</button> -->
+     <button class="audio-control" id="playMusicBtn" title="Play/Pause Music">🎵</button>
 
     <!-- Main container -->
     <div class="container">
@@ -1736,13 +1802,13 @@
                         <img src="images/silly-fight.jpg" alt="🙈🤣 Our Silly Fights, But Never Apart 💫" class="gallery-image">
                     </div>
                     <div class="gallery-slide">
-                        <img src="images/our-bond.jpg" alt="🤝💫 Our Bonds, Forever Strong ✨❤️" class="gallery-image">
-                    </div>
-                    <div class="gallery-slide">
                         <img src="images/Itachi-birthday.jpg" alt="🎂🎉 Itachi’s Birthday Celebration 🔥🖤" class="gallery-image">
                     </div>
                     <div class="gallery-slide">
-                        <img src="images/anniversary-celebration.jpg" alt="🎉💍 Safa ❤️ Abu Anniversary Celebration 🥰🌹" class="gallery-image">
+                        <img src="images/dubai-anniversary.jpg" alt="🎉💍 Safa ❤️ Abu Anniversary Celebration 🥰🌹" class="gallery-image">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="images/our-bond.jpg" alt="🤝💫 Our Bonds, Forever Strong ✨❤️" class="gallery-image">
                     </div>
                     <div class="gallery-slide">
                         <img src="images/birthday-celebration.png" alt="🎁🎇 Safa’s Birthday Celebration 🌟💐" class="gallery-image">
@@ -1751,12 +1817,13 @@
                 
                 <button class="gallery-nav prev" id="prevBtn">‹</button>
                 <button class="gallery-nav next" id="nextBtn">›</button>
-                
+
                 <div class="gallery-controls">
                     <button class="gallery-control-btn" id="playPauseBtn" style="display: none;">
                         ⏸️ Auto-Play
                     </button>
                 </div>
+                
             </div>
 
             <div class="gallery-info">
@@ -1797,7 +1864,10 @@
         </div>
         <button class="close-btn" id="closePlaylist">×</button>
     </div>
-    
+    <!-- Footer -->
+    <div class="footer">
+        Built with <span class="footer-heart">💜</span> 𝕀мρєяƒє¢т 𝕏
+    </div>
     <script>
         // Global variables
         let audioEnabled = true;
@@ -1811,9 +1881,9 @@
         const galleryImages = [
             { src: 'images/our-happiness.jpg', caption: '✨💖 Our Happiness 💖✨' },
             { src: 'images/silly-fight.jpg', caption: '🙈🤣 Our Silly Fights, But Never Apart 💫' },
-            { src: 'images/our-bond.jpg', caption: '🤝💫 Our Bonds, Forever Strong ✨❤️' },
             { src: 'images/itachi-birthday.jpg', caption: '🎂🎉 Itachi’s Birthday Celebration 🔥🖤' },
-            { src: 'images/anniversary-celebration.jpg', caption: '🎉💍 Safa ❤️ Abu Anniversary Celebration 🥰🌹' },
+            { src: 'images/dubai-anniversary.jpg', caption: '🎉💍 Safa ❤️ Abu Anniversary Celebration 🥰🌹' },
+            { src: 'images/our-bond.jpg', caption: '🤝💫 Our Bonds, Forever Strong ✨❤️' },
             { src: 'images/birthday-celebration.png', caption: '🎁🎇 Safa’s Birthday Celebration 🌟💐' }
         ];
 
@@ -1838,7 +1908,9 @@
         const photoContainer = document.getElementById('photoContainer');
         const photoCaption = document.getElementById('photoCaption');
         const actionButtons = document.getElementById('actionButtons');
-        const muteBtn = document.getElementById('muteBtn');
+        //const muteBtn = document.getElementById('muteBtn');
+        const playMusicBtn = document.getElementById('playMusicBtn');
+
 
         // Gallery elements
         const gallerySlider = document.getElementById('gallerySlider');
@@ -1846,6 +1918,8 @@
         const galleryCounter = document.getElementById('galleryCounter');
         const galleryIndicators = document.getElementById('galleryIndicators');
         const playPauseBtn = document.getElementById('playPauseBtn');
+
+        let isPlaying = false;
 
         // Slow motion birthday title animation
         function showBirthdayTitle() {
@@ -1855,6 +1929,16 @@
         // Show subtitle animation
         function showBirthdaySubtitle() {
             birthdaySubtitle.classList.add('show');
+        }
+
+        function showParagraphsSequentially() {
+            const paragraphs = document.querySelectorAll('.card-back p');
+            
+            paragraphs.forEach((paragraph, index) => {
+                setTimeout(() => {
+                    paragraph.classList.add('show');
+                }, index * 1500); // 1.5 second delay between each paragraph
+            });
         }
 
         // Initialize stars
@@ -1916,6 +2000,32 @@
             const audio = audios[audioKey];
             if (audio) {
                 audio.play().catch(e => console.log('Audio play failed:', e));
+            }
+        }
+
+        function stopAudio(audioKey) {
+            const audio = audios[audioKey];
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0; // reset
+            }
+        }
+
+        
+
+        function togglePlayPause() {
+            if (isPlaying) {
+                // Pause music
+                audios.songA.pause();
+                playMusicBtn.textContent = '🔇';
+                isPlaying = false;
+            } else {
+                // Play music
+                if (audioEnabled) {
+                    audios.songA.play().catch(e => console.log('Audio play failed:', e));
+                }
+                playMusicBtn.textContent = '🎵';
+                isPlaying = true;
             }
         }
 
@@ -2142,7 +2252,7 @@
 
         function toggleGalleryAutoPlay() {
             galleryAutoPlay = !galleryAutoPlay;
-            playPauseBtn.innerHTML = galleryAutoPlay ? '⏸️ Auto-Play' : '▶️ Auto-Play';
+            playPauseBtn.innerHTML = galleryAutoPlay ? '🔇' : '🎵';
             playPauseBtn.classList.toggle('active', galleryAutoPlay);
             
             if (galleryAutoPlay) {
@@ -2167,7 +2277,7 @@
             document.getElementById('galleryModal').classList.remove('show');
             stopGalleryAutoPlay();
             if (isAnimationComplete) {
-                playAudio('songA');
+                stopAudio('songC');
             }
         }
 
@@ -2185,7 +2295,7 @@
                 document.getElementById('nowPlaying').textContent = 'Click a song to play 🎶';
             }
             if (isAnimationComplete) {
-                playAudio('songA');
+                stopAudio('songA');
             }
         }
 
@@ -2223,14 +2333,22 @@
         function closeCard() {
             document.getElementById('cardModal').classList.remove('show');
             document.getElementById('greetingCard').classList.remove('flip');
+            
+            // Reset paragraphs
+            document.querySelectorAll('.card-back p').forEach(p => {
+                p.classList.remove('show');
+            });
+            
             if (isAnimationComplete) {
-                playAudio('songA');
+                stopAudio('songA');
+                stopAudio('songB');
             }
         }
 
         // Event listeners
         giftContainer.addEventListener('click', startSurprise);
-        muteBtn.addEventListener('click', toggleMute);
+        //muteBtn.addEventListener('click', toggleMute);
+        playMusicBtn.addEventListener('click', togglePlayPause);
 
         document.getElementById('messageBtn').addEventListener('click', showCard);
         document.getElementById('galleryBtn').addEventListener('click', showGallery);
@@ -2241,7 +2359,25 @@
         document.getElementById('closePlaylist').addEventListener('click', closePlaylist);
 
         document.getElementById('greetingCard').addEventListener('click', () => {
-            document.getElementById('greetingCard').classList.toggle('flip');
+            const card = document.getElementById('greetingCard');
+            
+            if (!card.classList.contains('flip')) {
+                // Flipping to back side
+                card.classList.add('flip');
+                
+                // Start paragraph animation after flip animation completes
+                setTimeout(() => {
+                    showParagraphsSequentially();
+                }, 800);
+            } else {
+                // Flipping back to front side
+                card.classList.remove('flip');
+                
+                // Reset paragraphs when flipping back
+                document.querySelectorAll('.card-back p').forEach(p => {
+                    p.classList.remove('show');
+                });
+            }
         });
 
         // Gallery navigation event listeners
