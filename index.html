@@ -1659,6 +1659,13 @@
             font-weight: 700;
             display: inline-block;
         }
+        .playlist-note {
+            font-size: 14px;
+            color: #fff;
+            text-align: center;
+            margin: 5px 0 15px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -1684,13 +1691,13 @@
 
     <!-- Playlist songs -->
     <audio id="playlistSong1" preload="auto">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3" type="audio/mpeg">
+        <source src="music/kannukulle.mp3" type="audio/mpeg">
     </audio>
     <audio id="playlistSong2" preload="auto">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3" type="audio/mpeg">
+        <source src="music/enge-antha-vennilla.mp3" type="audio/mpeg">
     </audio>
     <audio id="playlistSong3" preload="auto">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+        <source src="music/venmathi.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Audio control -->
@@ -1805,6 +1812,9 @@
                         <img src="images/Itachi-birthday.jpg" alt="🎂🎉 Itachi’s Birthday Celebration 🔥🖤" class="gallery-image">
                     </div>
                     <div class="gallery-slide">
+                        <img src="images/3idiots.jpg" alt="🥳🤣 Together we are the certified 3 Idiots 🎓💫" class="gallery-image">
+                    </div>
+                    <div class="gallery-slide">
                         <img src="images/dubai-anniversary.jpg" alt="🎉💍 Safa ❤️ Abu Anniversary Celebration 🥰🌹" class="gallery-image">
                     </div>
                     <div class="gallery-slide">
@@ -1838,6 +1848,7 @@
                     <div class="gallery-dot" data-index="3"></div>
                     <div class="gallery-dot" data-index="4"></div>
                     <div class="gallery-dot" data-index="5"></div>
+                    <div class="gallery-dot" data-index="6"></div>
                 </div>
             </div>
         </div>
@@ -1848,22 +1859,28 @@
     <div class="modal" id="playlistModal">
         <div class="playlist">
             <div class="playlist-title">🎵 Your Favourite Songs</div>
+            
+            <!-- Funny note -->
+            <div class="playlist-note">😂 Don’t Laugh Machaa! Chumma Oru Try 😅</div>
+            
             <div class="song-item" data-song="playlistSong1">
-                <div class="song-title">Birthday Celebration</div>
-                <div class="song-artist">Festive Beats</div>
+                <div class="song-title">Kannukulle Unnai Vaithen</div>
+                <div class="song-artist">sung by 𝕀мρєяƒє¢т 𝕏</div>
             </div>
             <div class="song-item" data-song="playlistSong2">
-                <div class="song-title">Magical Moments</div>
-                <div class="song-artist">Dream Sounds</div>
+                <div class="song-title">Enge Antha Vennila</div>
+                <div class="song-artist">sung by 𝕀мρєяƒє¢т 𝕏</div>
             </div>
             <div class="song-item" data-song="playlistSong3">
-                <div class="song-title">Happy Vibes</div>
-                <div class="song-artist">Joyful Tunes</div>
+                <div class="song-title">Venmathi Venmathi</div>
+                <div class="song-artist">sung by 𝕀мρєяƒє¢т 𝕏</div>
             </div>
+            
             <div class="now-playing" id="nowPlaying">Click a song to play 🎶</div>
         </div>
         <button class="close-btn" id="closePlaylist">×</button>
     </div>
+
     <!-- Footer -->
     <div class="footer">
         Built with <span class="footer-heart">💜</span> 𝕀мρєяƒє¢т 𝕏
@@ -1882,6 +1899,7 @@
             { src: 'images/our-happiness.jpg', caption: '✨💖 Our Happiness 💖✨' },
             { src: 'images/silly-fight.jpg', caption: '🙈🤣 Our Silly Fights, But Never Apart 💫' },
             { src: 'images/itachi-birthday.jpg', caption: '🎂🎉 Itachi’s Birthday Celebration 🔥🖤' },
+            { src: 'images/3idots.jpg', caption: '🥳🤣 Together we are the certified 3 Idiots 🎓💫' },
             { src: 'images/dubai-anniversary.jpg', caption: '🎉💍 Safa ❤️ Abu Anniversary Celebration 🥰🌹' },
             { src: 'images/our-bond.jpg', caption: '🤝💫 Our Bonds, Forever Strong ✨❤️' },
             { src: 'images/birthday-celebration.png', caption: '🎁🎇 Safa’s Birthday Celebration 🌟💐' }
